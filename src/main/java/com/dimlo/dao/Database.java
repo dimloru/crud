@@ -14,4 +14,6 @@ public interface Database {
     void markRead(int id);
 
     Book getBookById(int id);
+
+    void putBook(Book book);
 }

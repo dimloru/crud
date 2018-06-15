@@ -14,7 +14,7 @@ public class DbService {
 
     @Autowired
 //    @Qualifier("fakeBookData")
-    private Database database; // = new FakeBookDataImpl();
+    private Database database = new FakeBookDataImpl();
 
     public Collection<Book> getAllBooks() {
         return database.getAllBooks();
@@ -31,5 +31,9 @@ public class DbService {
 
     public Book getBookById(int id) {
         return database.getBookById(id);
+    }
+
+    public void putBook(Book book) {
+        database.putBook(book);
     }
 }

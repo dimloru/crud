@@ -8,23 +8,19 @@ import java.util.List;
 
 //@Repository
 //@Qualifier("BookDataDb")
-public class BookDataDbImpl implements Database {
-    @Override
+public class BookDataDbImpl { //implements Database {
     public List<Book> getAllBooks() {
         return null;
     }
 
-    @Override
     public void deleteBook(int id) {
 
     }
 
-    @Override
     public void markRead(int id) {
 
     }
 
-    @Override
     public Book getBookById(int id) {
         return null;
     }

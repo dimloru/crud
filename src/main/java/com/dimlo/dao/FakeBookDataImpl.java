@@ -42,4 +42,9 @@ public class FakeBookDataImpl implements Database {
     public Book getBookById(int id) {
         return books.get(id);
     }
+
+    @Override
+    public void putBook(Book book) {
+        books.put(book.getId(), book);
+    }
 }
