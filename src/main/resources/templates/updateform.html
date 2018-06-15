@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Updating</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <b><i>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Autor</td>
+            <td>isbn</td>
+            <td>Yaer printed</td>
+            <td>Read already</td>
+        </i></b>
+
+    </tr>
+        <td th:text="${book.id}"/>
+        <td th:text="${book.title}"/>
+        <td th:text="${book.description}"/>
+        <td th:text="${book.author}"/>
+        <td th:text="${book.isbn}"/>
+        <td th:text="${book.printYear}"/>
+        <td th:text="${book.readAlready}"/>
+    </tr>
+</table>
+
+<!--
+<h1>Form</h1>
+<form action="#" th:action="@{/dbcheck}" th:object="${record}" method="post">
+
+    <p>Id: <input type="text" th:field="*{id}" readonly disabled /></p>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>Age: <input type="text" th:field="*{age}" /></p>
+    <p>Profession: <input type="text" th:field="*{profession}" /></p>
+
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+-->
+
+
+</body>
+</html>

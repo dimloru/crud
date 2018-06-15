@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Table View</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Profession</td>
+    </tr>
+    <tr>
+        <td th:text="${name}"/>
+        <td th:text="${age}"/>
+        <td th:text="${profession}"/>
+    </tr>
+</table>
+<!--
+<p th:text="'Hello, ' + ${name} + '!'" />
+-->
+</body>
+</html>
