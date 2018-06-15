@@ -30,6 +30,7 @@ public class GreetingController {
     @GetMapping("/all")
     public String showAllBooks(Model model) {
         model.addAttribute("books", dbService.getAllBooks());
+        model.addAttribute("newbook", new Book());
         return "all";
     }
 
