@@ -36,4 +36,8 @@ public class DbService {
     public void putBook(Book book) {
         database.putBook(book);
     }
+
+    public int getNextId() {
+        return database.getNextId();
+    }
 }

@@ -16,4 +16,6 @@ public interface Database {
     Book getBookById(int id);
 
     void putBook(Book book);
+
+    int getNextId();
 }

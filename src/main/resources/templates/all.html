@@ -42,8 +42,9 @@
 <h1>Form</h1>
 <form action="#" th:action="@{/processupdate}" th:object="${newbook}" method="post">
 
-    <p>Id: <input type="text" th:field="*{id}" /></p>  <!-- readonly disabled
-        <input type="text" th:field="*{id}" hidden />-->
+    <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
+
+    <input type="text" th:field="*{id}" hidden />
     <p>Title: <input type="text" th:field="*{title}" /></p>
     <p>Desc: <input type="text" th:field="*{description}" /></p>
     <p>Author: <input type="text" th:field="*{author}" /></p>    <!-- readonly if update, 1 more model param

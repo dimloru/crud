@@ -47,4 +47,12 @@ public class FakeBookDataImpl implements Database {
     public void putBook(Book book) {
         books.put(book.getId(), book);
     }
+
+    @Override
+    public int getNextId() {
+        return books.keySet()
+                .stream()
+                .max(Comparator.naturalOrder())
+                .orElse(0) + 1;
+    }
 }

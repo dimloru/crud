@@ -30,7 +30,7 @@ public class GreetingController {
     @GetMapping("/all")
     public String showAllBooks(Model model) {
         model.addAttribute("books", dbService.getAllBooks());
-        model.addAttribute("newbook", new Book());
+        model.addAttribute("newbook", new Book(dbService.getNextId()));
         return "all";
     }
 
@@ -74,10 +74,12 @@ public class GreetingController {
 
     @PostMapping("/processupdate")
     public String processUpdate(@ModelAttribute Book book, BindingResult bindingResult, Model model) {
-        if (!bindingResult.hasErrors())
+        if (!bindingResult.hasErrors()) {
             dbService.putBook(book);
+        }
 
-            model.addAttribute("books", dbService.getAllBooks());
+        model.addAttribute("books", dbService.getAllBooks());
+        model.addAttribute("newbook", new Book(dbService.getNextId()));
 
         return "redirect:/all";
     }
