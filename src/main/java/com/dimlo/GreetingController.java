@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/")
 public class GreetingController {
@@ -53,7 +55,7 @@ public class GreetingController {
     }
 
     @PostMapping("/add")
-    public String addNewBook(@ModelAttribute Book book, BindingResult bindingResult, Model model) { // @ResponseBody
+    public String addNewBook(@Valid Book book, BindingResult bindingResult, Model model) { // @ResponseBody  @ModelAttribute
 //        Book newBook = new Book(book.getTitle(), book.getDescription(), book.getAuthor(), book.getIsbn(),
 //                book.getPrintyear(), book.getReadalready());
 //        return newBook.toString();
@@ -83,7 +85,7 @@ public class GreetingController {
     }
 
     @PostMapping("/processupdate")
-    public String processUpdate(@ModelAttribute Book book, BindingResult bindingResult, Model model) {
+    public String processUpdate(@Valid Book book, BindingResult bindingResult, Model model) {  //@ModelAttribute
 
         if (!bindingResult.hasErrors()) {
             book.setReadalready(false);

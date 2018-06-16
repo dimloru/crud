@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h1>All books</h1>
 
 <table border="1">
     <tr>
@@ -41,8 +42,9 @@
 
 <!---------------------------------------->
 <!-- Error here -->
-
-<h1>Form</h1>
+<table>
+        <tr><td>
+<h2>Add new book</h2>
 <form action="#" th:action="@{/add}" th:object="${newbook}" method="post">
 
     <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
@@ -61,7 +63,12 @@
 
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
+        </td></tr>
+        <tr><td>
+            <h2>Search</h2>
 
+        </td></tr>
+</table>
 
 <!-------------------------------------------------------->
 

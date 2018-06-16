@@ -1,17 +1,28 @@
 package com.dimlo;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
     @Id
+    @NotNull
     @GeneratedValue(strategy=GenerationType.IDENTITY)    //GenerationType.SEQUENCE - need to create table hibernate_sequence in test schema
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
+    @Size(min=0, max=85)
     private String title;
+    @Size(min=0, max=85)
     private String description;
+    @Size(min=0, max=85)
     private String author;
-    private String isbn;
+    @Size(min=0, max=20)
+    private String isbn; //not checkin cyrillic etc
+    @Min(Integer.MIN_VALUE)
+    @Max(3000)
     private Integer printyear;
     private Boolean readalready;
 
