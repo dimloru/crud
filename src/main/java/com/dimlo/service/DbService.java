@@ -1,22 +1,20 @@
 package com.dimlo.service;
 
+import com.dimlo.dao.BookDataDbImpl;
 import com.dimlo.dao.Database;
 import com.dimlo.dao.FakeBookDataImpl;
 import com.dimlo.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
 
 @Service
 public class DbService {
 
     @Autowired
 //    @Qualifier("fakeBookData")
-    private Database database = new FakeBookDataImpl();
+    private Database database = new BookDataDbImpl();
 
-    public Collection<Book> getAllBooks() {
+    public Iterable<Book> getAllBooks() {
         return database.getAllBooks();
     }
 

@@ -1,13 +1,22 @@
 package com.dimlo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
-    private int id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
     private String title;
     private String description;
     private String author;
     private String isbn;
-    private int printYear;
-    private boolean readAlready;
+    private Integer printYear;
+    private Boolean readAlready;
+
 
     public Book(int id, String title, String description, String author, String isbn, int printYear, boolean readAlready) {
         this.id = id;

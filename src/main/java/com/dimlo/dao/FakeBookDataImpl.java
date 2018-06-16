@@ -2,7 +2,6 @@ package com.dimlo.dao;
 
 
 import com.dimlo.entity.Book;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -23,7 +22,7 @@ public class FakeBookDataImpl implements Database {
     };
 
     @Override
-    public Collection<Book> getAllBooks() {
+    public Iterable<Book> getAllBooks() {
         return books.values();
     }
 
