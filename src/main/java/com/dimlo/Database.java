@@ -1,6 +1,4 @@
-package com.dimlo.dao;
-
-import com.dimlo.entity.Book;
+package com.dimlo;
 
 public interface Database {
 //    List<Record> getData();
@@ -16,4 +14,6 @@ public interface Database {
     void putBook(Book book);
 
     int getNextId();
+
+    void addNewBook(Book book);
 }

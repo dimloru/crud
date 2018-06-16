@@ -1,18 +1,18 @@
-package com.dimlo.service;
+package com.dimlo;
 
-import com.dimlo.dao.BookDataDbImpl;
-import com.dimlo.dao.Database;
-import com.dimlo.dao.FakeBookDataImpl;
-import com.dimlo.entity.Book;
+import com.dimlo.BookDataDbImpl;
+import com.dimlo.Database;
+import com.dimlo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DbService {
 
     @Autowired
-//    @Qualifier("fakeBookData")
-    private Database database = new BookDataDbImpl();
+    @Qualifier("realData")
+    private Database database; //= new BookDataDbImpl();
 
     public Iterable<Book> getAllBooks() {
         return database.getAllBooks();
@@ -37,5 +37,9 @@ public class DbService {
 
     public int getNextId() {
         return database.getNextId();
+    }
+
+    public void addNewBook(Book book) {
+        database.addNewBook(book);
     }
 }

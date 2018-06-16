@@ -25,8 +25,8 @@
         <td th:text="${book.description}"/>
         <td th:text="${book.author}"/>
         <td th:text="${book.isbn}"/>
-        <td th:text="${book.printYear}"/>
-        <td th:text="${book.readAlready}"/>
+        <td th:text="${book.printyear}"/>
+        <td th:text="${book.readalready}"/>
         <td>
             <a th:href = "@{/markread(id=${book.id})}">read</a>
         </td>
@@ -39,22 +39,33 @@
     </tr>
 </table>
 
+<!---------------------------------------->
+<!-- Error here -->
+
 <h1>Form</h1>
-<form action="#" th:action="@{/processupdate}" th:object="${newbook}" method="post">
+<form action="#" th:action="@{/add}" th:object="${newbook}" method="post">
 
     <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
 
+<!--
     <input type="text" th:field="*{id}" hidden />
+-->
     <p>Title: <input type="text" th:field="*{title}" /></p>
     <p>Desc: <input type="text" th:field="*{description}" /></p>
     <p>Author: <input type="text" th:field="*{author}" /></p>    <!-- readonly if update, 1 more model param
         <input type="text" th:field="*{author}" hidden /> -->
+
     <p>Isbn: <input type="text" th:field="*{isbn}" /></p>
-    <p>printYear: <input type="text" th:field="*{printYear}" /></p>
-    <input type="text" th:field="*{readAlready}" hidden />    <!-- might be a checkbox -->
+    <p>printYear: <input type="text" th:field="*{printyear}" /></p>
+    <input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
 
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
+
+
+<!-------------------------------------------------------->
+
+
 <!--
 <h1>Form</h1>
 <form action="#" th:action="@{/dbcheck}" th:object="${record}" method="post">

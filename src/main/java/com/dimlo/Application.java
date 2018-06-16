@@ -1,4 +1,4 @@
-package com.dimlo.controller;
+package com.dimlo;
 /*
 https://spring.io/guides/gs/serving-web-content/
 

@@ -24,8 +24,8 @@
         <td th:text="${book.description}"/>
         <td th:text="${book.author}"/>
         <td th:text="${book.isbn}"/>
-        <td th:text="${book.printYear}"/>
-        <td th:text="${book.readAlready}"/>
+        <td th:text="${book.printyear}"/>
+        <td th:text="${book.readalready}"/>
     </tr>
 </table>
 
@@ -33,15 +33,15 @@
 <h1>Form</h1>
 <form action="#" th:action="@{/processupdate}" th:object="${book}" method="post">
 
-    <p>Id: <input type="text" th:field="*{id}" disabled /></p>  <!-- readonly disabled -->
+    <p>Id: <input type="text" th:field="*{id}" disabled /></p> <!-- readonly disabled -->
     <input type="text" th:field="*{id}" hidden />
     <p>Title: <input type="text" th:field="*{title}" /></p>
     <p>Desc: <input type="text" th:field="*{description}" /></p>
     <p>Author: <input type="text" th:field="*{author}" disabled /></p>    <!-- readonly if update, 1 more model param -->
     <input type="text" th:field="*{author}" hidden />
     <p>Isbn: <input type="text" th:field="*{isbn}" /></p>
-    <p>printYear: <input type="text" th:field="*{printYear}" /></p>
-    <input type="text" th:field="*{readAlready}" hidden />    <!-- invisible field, marking book NOT read -->
+    <p>printYear: <input type="text" th:field="*{printyear}" /></p>
+    <input type="text" th:field="*{readalready}" hidden />    <!-- invisible field, marking book NOT read -->
 
     <!-- <p>readAlready: <input type="text" th:field="*{readAlready}" /></p>     might be a checkbox -->
 

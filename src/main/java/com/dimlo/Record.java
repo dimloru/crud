@@ -1,4 +1,4 @@
-package com.dimlo.entity;
+package com.dimlo;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
