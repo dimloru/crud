@@ -98,6 +98,15 @@ public class GreetingController {
         return "redirect:/all";
     }
 
+    @PostMapping("/search")
+    public @ResponseBody String search(@RequestParam("stitle") String stitle,
+                         @RequestParam("sdescription") String sdesc,
+                         @RequestParam("sauthor") String sauthor, @RequestParam("sisbn") String sisbn,
+                         @RequestParam("syearfrom") String syearfrom, @RequestParam ("syearto") String syearto) {
+        return stitle + " " + sdesc + " " + sauthor + " " + sisbn + " " + syearfrom + " " + syearto;
+//        return "redirect:/all";
+    }
+
 
 
 
