@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:vertical-align="http://www.w3.org/1999/xhtml"> <!-- css -->
 <head>
     <title>That stuff was loaded from a Database!!!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,60 +30,79 @@
         <td th:text="${book.printyear}"/>
         <td th:text="${book.readalready}"/>
         <td>
-            <a th:href = "@{/markread(id=${book.id})}">read</a>
+            <a th:href = "@{/markread(id=${book.id}, page=${page})}">read</a>
         </td>
         <td>
-            <a th:href = "@{/updateform(id=${book.id})}">update</a>
+            <a th:href = "@{/updateform(id=${book.id}, page=${page})}">update</a>
         </td>
         <td>
-            <a th:href = "@{/delete(id=${book.id})}">delete</a>
+            <a th:href = "@{/delete(id=${book.id}, page=${page})}">delete</a>
         </td>
     </tr>
 </table>
 
+<table>
+    <tr>
+        <td>Page <span th:text="${page}"></span> of <span th:text="${maxPages}"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Go to page:</td>
+        <td>
+            <form action="/all" method="get">
+                <input type="text" name="page" />
+                <input type="submit" value="Submit" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
 <!---------------------------------------->
 <!-- Error here -->
 <table>
-        <tr><td>
-<h2>Add new book</h2>
-<form action="#" th:action="@{/add}" th:object="${newbook}" method="post">
+        <tr>
+            <td vertical-align:top> <!-- vertical align doesn't work. try css -->
+                <h2>Add new book</h2>
+                <form action="#" th:action="@{/add}" th:object="${newbook}" method="post">
+                    <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
 
-    <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
+                <!--
+                    <input type="text" th:field="*{id}" hidden />
+                -->
+                    <p>Title: <input type="text" th:field="*{title}" /></p>
+                    <p>Desc: <input type="text" th:field="*{description}" /></p>
+                    <p>Author: <input type="text" th:field="*{author}" /></p>    <!-- readonly if update, 1 more model param
+                        <input type="text" th:field="*{author}" hidden /> -->
 
-<!--
-    <input type="text" th:field="*{id}" hidden />
--->
-    <p>Title: <input type="text" th:field="*{title}" /></p>
-    <p>Desc: <input type="text" th:field="*{description}" /></p>
-    <p>Author: <input type="text" th:field="*{author}" /></p>    <!-- readonly if update, 1 more model param
-        <input type="text" th:field="*{author}" hidden /> -->
+                    <p>Isbn: <input type="text" th:field="*{isbn}" /></p>
+                    <p>printYear: <input type="text" th:field="*{printyear}" /></p>
+                    <input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
 
-    <p>Isbn: <input type="text" th:field="*{isbn}" /></p>
-    <p>printYear: <input type="text" th:field="*{printyear}" /></p>
-    <input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
+                    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                </form>
+            </td>
+            <td width="30"></td>
+            <td vertical-align:top>
+                <h2>Search</h2>
+                <form action="/search" method="post"> <!--  th:action="@{/search}" -->
 
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+                    <p>Title: <input type="text" name="stitle" /></p>
+                    <p>Desc: <input type="text" name="sdescription" /></p>
+                    <p>Author: <input type="text" name="sauthor" /></p>
+                    <p>Isbn: <input type="text" name="sisbn" /></p>
+                    <p>printYear from: <input type="text" name="syearfrom" /></p>
+                    <p>printYear to: <input type="text" name="syearto" /></p>
 
-        </td></tr>
-        <tr><td>
-            <h2>Search</h2>
-            <form action="/search" method="post"> <!--  th:action="@{/search}" -->
+                    <!-- isRead?
+                    <<input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
 
-                <p>Title: <input type="text" name="stitle" /></p>
-                <p>Desc: <input type="text" name="sdescription" /></p>
-                <p>Author: <input type="text" name="sauthor" /></p>
-                <p>Isbn: <input type="text" name="sisbn" /></p>
-                <p>printYear from: <input type="text" name="syearfrom" /></p>
-                <p>printYear to: <input type="text" name="syearto" /></p>
+                    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                </form>
 
-                <!-- isRead?
-                <<input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
-
-                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-            </form>
-
-        </td></tr>
+            </td>
+        </tr>
 
 
 </table>
