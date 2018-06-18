@@ -1,13 +1,10 @@
-package com.dimlo;
+package com.dimlo.service;
 
-import com.dimlo.BookDataDbImpl;
-import com.dimlo.Database;
-import com.dimlo.Book;
+import com.dimlo.dao.Database;
+import com.dimlo.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public class DbService {
@@ -72,6 +69,8 @@ public class DbService {
 //        if (sdesc != null && sdesc.equals("")) sdesc = null;
 //        if (sauthor != null && sauthor.equals("")) sauthor = null;
 //        if (sisbn != null && sisbn.equals("")) sisbn = null;
+
+
 
         return database.search(stitle, sdesc, sauthor, sisbn, yearFrom, yearTo);
     }

@@ -1,23 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Updating</title>
+    <title>Update</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
+<h2>You are intending to update the following book</h2>
 <table border="1">
     <tr>
-        <b><i>
-            <td>Id</td>
-            <td>Title</td>
-            <td>Description</td>
-            <td>Autor</td>
-            <td>isbn</td>
-            <td>Yaer printed</td>
-            <td>Read already</td>
-        </i></b>
-
+        <td>Id</td>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Autor</td>
+        <td>isbn</td>
+        <td>Yaer printed</td>
+        <td>Read already</td>
     </tr>
         <td th:text="${book.id}"/>
         <td th:text="${book.title}"/>
@@ -29,8 +27,7 @@
     </tr>
 </table>
 
-
-<h1>Form</h1>
+<h2>Please enter new data</h2>
 <form action="#" th:action="@{/processupdate}" th:object="${book}" method="post">
 
     <p>Id: <input type="text" th:field="*{id}" disabled /></p> <!-- readonly disabled -->
@@ -47,8 +44,6 @@
 
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
-
-
 
 </body>
 </html>

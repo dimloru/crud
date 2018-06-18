@@ -1,7 +1,7 @@
-package com.dimlo;
+package com.dimlo.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.dimlo.entity.Book;
+import com.dimlo.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -54,6 +54,7 @@ public class BookDataDbImpl implements Database {
 
     @Override
     public Iterable<Book> search(String stitle, String sdesc, String sauthor, String sisbn, Integer yearFrom, Integer yearTo) {
+
         return StreamSupport.stream(getAllBooks().spliterator(), false)
                 .filter(s -> (s.getPrintyear() != null && s.getPrintyear() >= yearFrom && s.getPrintyear() <= yearTo) || s.getPrintyear() == null)
                 .filter(s -> stitle == "" || (stitle != null && s.getTitle() != null && stitle.equals(s.getTitle())))

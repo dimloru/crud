@@ -1,4 +1,4 @@
-package com.dimlo;
+package com.dimlo.entity;
 
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;

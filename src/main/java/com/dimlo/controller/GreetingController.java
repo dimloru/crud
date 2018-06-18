@@ -1,5 +1,7 @@
-package com.dimlo;
+package com.dimlo.controller;
 
+import com.dimlo.entity.Book;
+import com.dimlo.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -157,49 +159,7 @@ public class GreetingController {
         return "redirect:error";
     }
 
-
-
-
-//    @GetMapping("/greeting")
-//    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-//        model.addAttribute("name", name);
-//        return "greeting";
-//    }
-
-
-//    @GetMapping("/table")
-//    public String table(@RequestParam(name="name", required=false, defaultValue="Somebody") String name,
-//                        @RequestParam(name="age", required=false, defaultValue="0") String age,
-//                        //throwing error when not an int value passed
-//                        @RequestParam(name="profession", required=false, defaultValue="Blogger") String profession,
-//                        Model model) {
-//        model.addAttribute("name", name);
-//        model.addAttribute("age", age);
-//        model.addAttribute("profession", profession);
-//        return "table";
-//    }
-
-
-//    @GetMapping("/dbcheck")
-//    public String dbcheck(Model model) {
-//
-//        model.addAttribute("response", records);
-//        model.addAttribute("record", new Record());
-//        return "dbcheck";
-//    }
-
-
-
-//    @PostMapping("/dbcheck")
-//    public String submitRecord(@Valid Record record, BindingResult bindingResult, Model model) {
-    ///    @ModelAttribute
-//        if (!bindingResult.hasErrors())
-//            records.add(record);
-//
-//        model.addAttribute("response", records);
-//
-//        return "redirect:/dbcheck";
-//        //Atother view and "back" button
-//    }
+// @ModelAttribute
+// @ResponseBody
 
 }
