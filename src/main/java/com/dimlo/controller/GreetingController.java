@@ -47,7 +47,7 @@ public class GreetingController {
         allBooks.forEach(allBooksList::add);
         PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(allBooksList);
 
-        pagedListHolder.setPageSize(5);
+        pagedListHolder.setPageSize(10);
         model.addAttribute("maxPages", pagedListHolder.getPageCount());
 
         if (page==null ||page < 1)
