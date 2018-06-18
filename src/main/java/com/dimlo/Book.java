@@ -104,11 +104,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getPrintyear() {
+    public Integer getPrintyear() {
         return printyear;
     }
 
-    public void setPrintyear(int printyear) {
+    public void setPrintyear(Integer printyear) {
         this.printyear = printyear;
     }
 

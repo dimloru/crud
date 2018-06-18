@@ -16,4 +16,6 @@ public interface Database {
     int getNextId();
 
     void addNewBook(Book book);
+
+    Iterable<Book> search(String stitle, String sdesc, String sauthor, String sisbn, Integer yearFrom, Integer yearTo);
 }

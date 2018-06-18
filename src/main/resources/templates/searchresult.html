@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:vertical-align="http://www.w3.org/1999/xhtml"> <!-- css -->
+<head>
+    <title>Search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Search result</h1>
+
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Autor</td>
+        <td>isbn</td>
+        <td>Yaer printed</td>
+        <td>Read already</td>
+        <td>Mark read</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"/>
+        <td th:text="${book.title}"/>
+        <td th:text="${book.description}"/>
+        <td th:text="${book.author}"/>
+        <td th:text="${book.isbn}"/>
+        <td th:text="${book.printyear}"/>
+        <td th:text="${book.readalready}"/>
+        <td>
+            <a th:href = "@{/markread(id=${book.id}, page=${page})}">read</a>
+        </td>
+        <td>
+            <a th:href = "@{/updateform(id=${book.id}, page=${page})}">update</a>
+        </td>
+        <td>
+            <a th:href = "@{/delete(id=${book.id}, page=${page})}">delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
