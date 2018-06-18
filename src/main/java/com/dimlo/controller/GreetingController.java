@@ -32,10 +32,9 @@ public class GreetingController {
 //    Can't autowire here for some reason
     private DbService dbService; // = new DbService();
 
-    @GetMapping(path="/a")
-    public @ResponseBody Iterable<Book> getAllUsers() {
-        // This returns a JSON or XML with the users
-        return dbService.getAllBooks();
+    @GetMapping("/")
+    public String start() {
+    return "forward:all";
     }
 
 
@@ -51,7 +50,11 @@ public class GreetingController {
         pagedListHolder.setPageSize(5);
         model.addAttribute("maxPages", pagedListHolder.getPageCount());
 
-        if(page==null || page < 1 || page > pagedListHolder.getPageCount())page=1;
+        if (page==null ||page < 1)
+            page=1;
+        if (page > pagedListHolder.getPageCount())
+             page = pagedListHolder.getPageCount();
+
         model.addAttribute("page", page);
 
 
@@ -142,10 +145,6 @@ public class GreetingController {
                          @RequestParam("sdescription") String sdesc,
                          @RequestParam("sauthor") String sauthor, @RequestParam("sisbn") String sisbn,
                          @RequestParam("syearfrom") String syearfrom, @RequestParam ("syearto") String syearto, Model model) {
-
-//        Some test stuff
-//        return dbService.search(stitle, sdesc, sauthor, sisbn, syearfrom, syearto).toString();
-//        return stitle + " " + sdesc + " " + sauthor + " " + sisbn + " " + syearfrom + " " + syearto;
 
 //        TODO: implement hibernate search engine
 

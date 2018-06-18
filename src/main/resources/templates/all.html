@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:vertical-align="http://www.w3.org/1999/xhtml"> <!-- css -->
 <head>
-    <title>That stuff was loaded from a Database!!!</title>
+    <title>Javarush CRUD</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -44,6 +44,13 @@
 <table>
     <tr>
         <td>Page <span th:text="${page}"></span> of <span th:text="${maxPages}"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href = "@{/all(page=${page}-1)}">Prev</a>
+            <a th:href = "@{/all(page=${page}+1)}">Next</a>
+        </td>
         <td></td>
     </tr>
     <tr>

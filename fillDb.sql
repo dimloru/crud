@@ -30,5 +30,20 @@ INSERT INTO `book` (`title`, `description`, `author`, `isbn`, `printYear`, `read
 		("Garry Potter and The Order of the Phoenix", "Fantasy", "J. K. Rowling", "978-3-16-148410-0", 2003, 0),
 		("Garry Potter and The Half-Blood Prince", "Fantasy", "J. K. Rowling", "978-3-16-148410-0", 2005, 0),
 		("Garry Potter and The Deathly Hallows", "Fantasy", "J. K. Rowling", "978-3-16-148410-0", 2007, 0),
-		("The Lord of the Rings", "Fantasy", "J.R.R.Tolkien", "978-3-16-148410-0", 1954, 0);
-		
+		("The Lord of the Rings", "Fantasy", "J.R.R.Tolkien", "978-3-16-148410-0", 1954, 0),
+        ("The Ousider", "Horror", "Stephen King", "978-3-16-148410-0", 2018, 0),
+		("Salems Lot", "Horror", "Stephen King", "978-3-16-148410-0", 2011, 0),
+        ("112263", "Horror", "Stephen King", "978-3-16-148410-0", 2012, 0),
+        ("Dr Sleep", "Horror", "Stephen King", "978-3-16-148410-0", 2016, 0),
+        ("The Body", "Horror", "Stephen King", "978-3-16-148410-0", 2018, 0),
+        ("Effective Java", "Tutorial", "Joshua Bloch", "978-3-16-148410-0", 2017, 0),
+        ("Java: Beginners guide", "Tutorial", "Herbert Schildt", "978-3-16-148410-0", 2017, 0),
+        ("Head First Java", "Tutorial", "Kathy Sierra", "978-3-16-148410-0", 2005, 0),
+        ("Head First Design Patterns", "Tutorial", "Eric Freeman", "978-0596007126", 2007, 0),
+        ("Thinking in Java", "Tutorial", "Bruce Eckel", "978-0131872486", 2014, 0),
+        ("MySQL", "Tutorial", "Paul DuBois", "978-9332523852", 2013, 0),
+        ("SQL in 10 minutes", "Tutorial", "Ben Forta", "978-0672336072", 2012, 0),
+        ("Web design with HTML, CSS and JavaScript", "Tutorial", "Jon Duckett", "978-1118907443", 2014, 0),
+        ("JavaScript: The Definitive Guide", "Tutorial", "David Flanagan", "978-3-16-148410-0", 2011, 0),
+        ("Hibernate Tips", "Tutorial", "Thorben Janssen", "978-3-16-148410-0", 2017, 0),
+        ("Angular 5: Ftom Theory to Practice", "Tutorial", "Stephen King", "978-3-16-148410-0", 2017, 0);
