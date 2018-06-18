@@ -17,25 +17,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class GreetingController {
-//    List<Record> records = new FakeRecordDataImpl().getData();
 
-    /*
-    ???
-    https://spring.io/guides/gs/validating-form-input/
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/results").setViewName("results");
-    }
-     */
     @Autowired
-//    Can't autowire here for some reason
-    private DbService dbService; // = new DbService();
+    private DbService dbService;
 
     @GetMapping("/")
     public String start() {
-    return "forward:all";
-    }
+    return "forward:all";    }
 
 
     @GetMapping("/all")
@@ -45,7 +33,7 @@ public class GreetingController {
         Iterable<Book> allBooks = dbService.getAllBooks();
         List<Book> allBooksList = new ArrayList<>();
         allBooks.forEach(allBooksList::add);
-        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(allBooksList);
+        PagedListHolder<Book> pagedListHolder = new PagedListHolder<>(allBooksList);
 
         pagedListHolder.setPageSize(10);
         model.addAttribute("maxPages", pagedListHolder.getPageCount());
@@ -57,26 +45,15 @@ public class GreetingController {
 
         model.addAttribute("page", page);
 
-
-        //TODO: rewrite some logic here
         if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
             pagedListHolder.setPage(0);
         }
         else if(page <= pagedListHolder.getPageCount()) {
             pagedListHolder.setPage(page-1);
         }
-//        else {
-//            pagedListHolder.setPage(0);
-//        }
 
         model.addAttribute("books", pagedListHolder.getPageList());
-
-//        model.addAttribute("books", dbService.getAllBooks());
         model.addAttribute("newbook", new Book(1900, false));
-
-        //   PagedListHolder
-        //   https://stackoverflow.com/questions/31883643/how-do-i-add-simple-pagination-for-spring-mvc
-        // todo impl in template
 
         return "all";
     }
@@ -98,30 +75,21 @@ public class GreetingController {
 
     @PostMapping("/add")
     public String addNewBook(@Valid Book book, BindingResult bindingResult, Model model) { // @ResponseBody  @ModelAttribute
-//        Book newBook = new Book(book.getTitle(), book.getDescription(), book.getAuthor(), book.getIsbn(),
-//                book.getPrintyear(), book.getReadalready());
-//        return newBook.toString();
+
         if (!bindingResult.hasErrors()) {
             dbService.addNewBook(book);
         }
-
-        model.addAttribute("books", dbService.getAllBooks());
-        model.addAttribute("newbook", new Book(1900, false));
 
         return "redirect:/all";
     }
 
     @GetMapping("/updateform")
     public String updateForm(@RequestParam int id, Model model) {
-        // page redirecting not done
         Book book = dbService.getBookById(id);
         if (book != null) {
             model.addAttribute("book", book);
             return "updateform";
         } else {
-//            model.addAttribute("books", dbService.getAllBooks());
-//            model.addAttribute("newbook", new Book(dbService.getNextId()));
-
             return "redirect:/all";
         }
     }
@@ -134,9 +102,6 @@ public class GreetingController {
             dbService.putBook(book);
         }
 
-        model.addAttribute("books", dbService.getAllBooks());
-        model.addAttribute("newbook", new Book(dbService.getNextId()));
-
         return "redirect:/all";
     }
 
@@ -145,8 +110,6 @@ public class GreetingController {
                          @RequestParam("sdescription") String sdesc,
                          @RequestParam("sauthor") String sauthor, @RequestParam("sisbn") String sisbn,
                          @RequestParam("syearfrom") String syearfrom, @RequestParam ("syearto") String syearto, Model model) {
-
-//        TODO: implement hibernate search engine
 
         model.addAttribute("books", dbService.search(stitle, sdesc, sauthor, sisbn, syearfrom, syearto));
 
@@ -157,8 +120,4 @@ public class GreetingController {
     public String error(Model model) {
         return "redirect:error";
     }
-
-// @ModelAttribute
-// @ResponseBody
-
 }

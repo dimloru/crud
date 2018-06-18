@@ -43,11 +43,6 @@ public class BookDataDbImpl implements Database {
     }
 
     @Override
-    public int getNextId() {
-        return 500;
-    }
-
-    @Override
     public void addNewBook(Book book) {
         bookRepository.save(book);
     }
@@ -61,7 +56,8 @@ public class BookDataDbImpl implements Database {
                 .filter(s -> sdesc == "" || (sdesc != null && s.getDescription() != null && sdesc.equals(s.getDescription())))
                 .filter(s -> sauthor == "" || (sauthor != null && s.getAuthor() != null && sauthor.equals(s.getAuthor())))
                 .filter(s -> sisbn == "" || (sisbn != null && s.getIsbn() != null && sisbn.equals(s.getIsbn())))
-
                 .collect(Collectors.toList());
+
+        // potential update: replace this sruff with hibernate / repository search engine
     }
 }

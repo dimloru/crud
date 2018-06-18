@@ -17,17 +17,6 @@ public class DbService {
         return database.getAllBooks();
     }
 
-//    public Iterable<Book> getAllBooksAsList() {
-//
-//
-//    Iterable<Book> allBooks = dbService.getAllBooks();
-//    List<Book> allBooksList = new ArrayList<>();
-//        allBooks.forEach(allBooksList::add);
-//
-//
-//    }
-
-
     public void deleteBook(int id) {
         database.deleteBook(id);
     }
@@ -41,37 +30,31 @@ public class DbService {
     }
 
     public void putBook(Book book) {
+        // 2 different methods just in case
         database.putBook(book);
     }
 
-    public int getNextId() {
-        return database.getNextId();
-    }
-
     public void addNewBook(Book book) {
+        // 2 different methods just in case
         database.addNewBook(book);
     }
 
     public Iterable<Book> search(String stitle, String sdesc, String sauthor, String sisbn, String syearfrom, String syearto) {
+
         Integer yearFrom, yearTo;
+
         try {
             yearFrom = Integer.parseInt(syearfrom);
         } catch (NumberFormatException e) {
             yearFrom = Integer.MIN_VALUE;
+        }
 
-        }try {
+        try {
             yearTo = Integer.parseInt(syearto);
         } catch (NumberFormatException e) {
             yearTo = Integer.MAX_VALUE;
         }
 
-//        if (stitle != null && stitle.equals("")) stitle = null;
-//        if (sdesc != null && sdesc.equals("")) sdesc = null;
-//        if (sauthor != null && sauthor.equals("")) sauthor = null;
-//        if (sisbn != null && sisbn.equals("")) sisbn = null;
-
-
-
-        return database.search(stitle, sdesc, sauthor, sisbn, yearFrom, yearTo);
+        return database.search(stitle.trim(), sdesc.trim(), sauthor.trim(), sisbn.trim(), yearFrom, yearTo);
     }
 }
