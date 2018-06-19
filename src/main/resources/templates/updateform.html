@@ -26,9 +26,10 @@
         <td th:text="${book.readalready}"/>
     </tr>
 </table>
+<p><a href="/all">Go back</a></p>
 
 <h2>Please enter new data</h2>
-<form action="#" th:action="@{/processupdate}" th:object="${book}" method="post">
+<form action="#" th:action="@{/processupdate(page=${page})}" th:object="${book}" method="post">
 
     <p>Id: <input type="text" th:field="*{id}" disabled /></p>
     <input type="text" th:field="*{id}" hidden />

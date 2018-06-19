@@ -30,15 +30,16 @@
         <td th:text="${book.printyear}"/>
         <td th:text="${book.readalready}"/>
         <td>
-            <a th:href = "@{/markread(id=${book.id}, page=${page})}">read</a>
+            <a th:href = "@{/markread(id=${book.id})}">read</a>
         </td>
         <td>
-            <a th:href = "@{/updateform(id=${book.id}, page=${page})}">update</a>
+            <a th:href = "@{/updateform(id=${book.id})}">update</a>
         </td>
         <td>
-            <a th:href = "@{/delete(id=${book.id}, page=${page})}">delete</a>
+            <a th:href = "@{/delete(id=${book.id})}">delete</a>
         </td>
     </tr>
 </table>
+<p><a href="/all">Go back</a></p>
 </body>
 </html>

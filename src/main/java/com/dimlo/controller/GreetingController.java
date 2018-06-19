@@ -75,10 +75,11 @@ public class GreetingController {
     }
 
     @GetMapping("/updateform")
-    public String updateForm(@RequestParam int id, Model model) {
+    public String updateForm(@RequestParam Integer id, @RequestParam(required = false) Integer page, Model model) {
         Book book = dbService.getBookById(id);
         if (book != null) {
             model.addAttribute("book", book);
+            model.addAttribute("page", page);
             return "updateform";
         } else {
             return "redirect:/all";
@@ -86,13 +87,16 @@ public class GreetingController {
     }
 
     @PostMapping("/processupdate")
-    public String processUpdate(@Valid Book book, BindingResult bindingResult, Model model) {  //@ModelAttribute
+    public String processUpdate(@Valid Book book, BindingResult bindingResult,
+                                @RequestParam (required = false) Integer page,
+                                RedirectAttributes redirectAttributes) {
 
         if (!bindingResult.hasErrors()) {
             book.setReadalready(false);
             dbService.putBook(book);
         }
 
+        redirectAttributes.addAttribute("page", page);
         return "redirect:/all";
     }
 
