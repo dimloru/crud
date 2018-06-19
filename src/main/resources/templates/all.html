@@ -64,72 +64,35 @@
     </tr>
 </table>
 
-
-
-<!---------------------------------------->
-<!-- Error here -->
 <table>
         <tr>
-            <td vertical-align:top> <!-- vertical align doesn't work. try css -->
+            <td>
                 <h2>Add new book</h2>
                 <form action="#" th:action="@{/add}" th:object="${newbook}" method="post">
-                    <!-- <p>Id: <input type="text" th:field="*{id}" /></p>  readonly disabled    -->
-
-                <!--
-                    <input type="text" th:field="*{id}" hidden />
-                -->
                     <p>Title: <input type="text" th:field="*{title}" /></p>
                     <p>Desc: <input type="text" th:field="*{description}" /></p>
-                    <p>Author: <input type="text" th:field="*{author}" /></p>    <!-- readonly if update, 1 more model param
-                        <input type="text" th:field="*{author}" hidden /> -->
-
+                    <p>Author: <input type="text" th:field="*{author}" /></p>
                     <p>Isbn: <input type="text" th:field="*{isbn}" /></p>
                     <p>printYear: <input type="text" th:field="*{printyear}" /></p>
-                    <input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
+                    <input type="text" th:field="*{readalready}" hidden />
 
                     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
                 </form>
             </td>
             <td width="30"></td>
-            <td vertical-align:top>
+            <td>
                 <h2>Search</h2>
-                <form action="/search" method="post"> <!--  th:action="@{/search}" -->
-
+                <form action="/search" method="post">
                     <p>Title: <input type="text" name="stitle" /></p>
                     <p>Desc: <input type="text" name="sdescription" /></p>
                     <p>Author: <input type="text" name="sauthor" /></p>
                     <p>Isbn: <input type="text" name="sisbn" /></p>
                     <p>printYear from: <input type="text" name="syearfrom" /></p>
                     <p>printYear to: <input type="text" name="syearto" /></p>
-
-                    <!-- isRead?
-                    <<input type="text" th:field="*{readalready}" hidden />    <!-- might be a checkbox -->
-
                     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
                 </form>
-
             </td>
         </tr>
-
-
 </table>
-
-<!-------------------------------------------------------->
-
-
-<!--
-<h1>Form</h1>
-<form action="#" th:action="@{/dbcheck}" th:object="${record}" method="post">
-
-    <p>Id: <input type="text" th:field="*{id}" readonly disabled /></p>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Age: <input type="text" th:field="*{age}" /></p>
-    <p>Profession: <input type="text" th:field="*{profession}" /></p>
-
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
--->
-
-
 </body>
 </html>

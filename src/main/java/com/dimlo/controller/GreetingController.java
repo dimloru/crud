@@ -30,28 +30,19 @@ public class GreetingController {
     public String showAllBooks(@RequestParam(required = false) Integer page, Model model) {
         //todo check the value to be an int or pass string
 
-        Iterable<Book> allBooks = dbService.getAllBooks();
-        List<Book> allBooksList = new ArrayList<>();
-        allBooks.forEach(allBooksList::add);
-        PagedListHolder<Book> pagedListHolder = new PagedListHolder<>(allBooksList);
+        PagedListHolder<Book> pagedListHolder = dbService.getPagedListHolder();
 
         pagedListHolder.setPageSize(10);
+
         model.addAttribute("maxPages", pagedListHolder.getPageCount());
 
-        if (page==null ||page < 1)
-            page=1;
+        if (page == null || page < 1)
+            page = 1;
         if (page > pagedListHolder.getPageCount())
              page = pagedListHolder.getPageCount();
 
+        pagedListHolder.setPage(page-1);
         model.addAttribute("page", page);
-
-        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
-            pagedListHolder.setPage(0);
-        }
-        else if(page <= pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(page-1);
-        }
-
         model.addAttribute("books", pagedListHolder.getPageList());
         model.addAttribute("newbook", new Book(1900, false));
 

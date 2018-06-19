@@ -4,7 +4,11 @@ import com.dimlo.dao.Database;
 import com.dimlo.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DbService {
@@ -15,6 +19,13 @@ public class DbService {
 
     public Iterable<Book> getAllBooks() {
         return database.getAllBooks();
+    }
+
+    public PagedListHolder<Book> getPagedListHolder() {
+        List<Book> allBooksList = new ArrayList<>();
+        getAllBooks().forEach(allBooksList::add);
+
+        return new PagedListHolder<Book>(allBooksList);
     }
 
     public void deleteBook(int id) {
