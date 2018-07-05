@@ -9,13 +9,25 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
+@SpringBootApplication //=
+// @EnableAutoConfiguration
+// @ComponentScan
+// @Configuration
+// So no additional Config.java needed
+@EnableJpaRepositories("com.dimlo.repositories")
+// also beans can be declared here
 public class Application extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(Application.class);
+        // Customize the application or call application.sources(...) to add sources
+        // Since our example is itself a @Configuration class (via @SpringBootApplication)
+        // we actually don't need to override this method.
+
+//        return builder.sources(Application.class);
+        return builder;
     }
 
     public static void main(String[] args) {
